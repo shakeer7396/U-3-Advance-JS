@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // function person(n,a){
+    //     this. name=n;
+    //     this.age=a;
+    //     this.showName=()=>{
+    //         console.log(this.name);
+    //     }
+    // }
+
+
+    // class Person{
+    //     constructor(n,a){
+    //         this.name=n;
+    //         this.age=a;
+    //     }
+    //     showname(){
+    //         console.log(this.name);
+    //     }
+    // }
+    // let p1=new Person("MSD",23)
+    // console.log("p1:",p1);
+    // p1.showname();
+
+    // class Cat{
+    //     constructor(s,l){
+    //         this.spices=s
+    //         this.legs=l;
+    //         this.furs=true;
+    //     }
+    // }
+    // class Tiger extends Cat{
+    //     constructor(s,l){
+    //         super(s,l);
+    //         this.speed=60;
+    //     }
+    // }
+    // class whiteTiger extends Tiger{
+    //     constructor(s,l){
+    //         super(s,l)
+    //         this.name="simba"
+    //     }
+    // }
+    
+    // let w1=new whiteTiger("cat",10);
+    // console.log("w1:",w1);
+
+    class MyStack{
+        constructor(){
+            this.length=0;
+            this.stack=[];
+        }
+        push(...value){
+            value.forEach((el)=>{
+                this.stack.push(el)
+            this.length++;
+            })
+            
+            console.log(this.stack);
+        }
+        pop(){
+            this.stack.pop();
+            this.length--;
+            console.log(this.stack);
+        }
+    }
+    let stack=new MyStack();
+    stack.push(2,3,4,5,6,7);
+   // stack.push(3);
+    //console.log("stack:",stack)
+</script>

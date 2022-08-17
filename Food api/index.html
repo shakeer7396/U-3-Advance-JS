@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #nav{
+            width: 100%;
+            height: 80px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display: flex;
+            align-items: center;
+        }
+        #left{
+            width: 70%;
+            margin-left: 30px;
+            font-weight: bold;
+        }
+        #right{
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        a{
+            color: black;
+        }
+        #search_div{
+            margin-top: 20px;
+            text-align: center;
+        }
+        #submit{
+            margin-top: 20px;
+        }
+        h2{
+            text-align: center;
+            color:  rgb(8, 12, 228);
+        }
+        img{
+            width: 20%;
+        }
+        #container{
+            text-align: center;
+            margin-left: 100px;
+            font-weight: bold;
+        }
+        #content{
+            display: flex;
+            text-align: center;
+            margin-left: 150px;
+            
+        }
+        #menu{
+            display: flex;
+            gap: 30px;
+            font-weight: bold;
+            color:blue
+        }
+        /* #menu1{
+            margin-right: 20px;
+        } */
+        #heading{
+            margin-left: 10px;
+            color: rgb(228, 8, 8);
+            
+        }
+        #id{
+            display: flex;
+            gap: 450px;
+            margin-left: 230px;
+        }
+    </style>
+   
+</head>
+<body>
+  <div id="nav"></div>
+  <div id="search_div">
+    <input type="search" id="search" placeholder="Enter Receipe Name" oninput="debouncing(main,1000)">
+    <div id="dropdown"></div>
+    <div>
+        <button id="submit" onclick="submit()">Search</button>
+    </div>
+  </div>
+  <div id="id">
+    <h2 id="heading">Menu</h2>
+    <h2>Receipe Of The Day</h2>
+  </div>
+
+  <div id="content">
+    
+    <div id="menu"> 
+        <div id="menu1">
+        <p>Chickpea </p>
+        <p>Burek</p>
+        <p>Tamiya</p>
+        <p>Dal fry</p>
+        <p>Poutine</p>
+        <p>Poutine</p>
+        <p>Lasagne</p>
+        <p>Timbits</p>
+        <p>Wontons</p>
+       
+        </div>
+        <div>
+        <p>Fish pie</p>
+        <p>Pancakes</p>
+        <p>Kedgeree</p>
+        <p>Flamiche</p>
+        <p>Stamppot</p>
+        <p>Moussaka</p>
+        <p>Shawarma</p>
+        <p>Eton Mess</p>
+        <p>Ribollita</p>
+        
+        </div>
+        <div>
+        <p>Kafteji</p>
+        <p>Big Mac</p>
+        <p>Koshari</p>
+        <p>Kapsalon</p>
+        <p>Yaki Udon</p>
+        <p>Tourtiere</p>
+        <p>Sugar Pie</p>
+        <p>Wontons</p>
+        <p>Boxty </p>
+        </div>
+    </div>
+    <div>
+        
+        <div id="container"></div>
+      </div>
+  </div>
+ 
+ 
+</body>
+</html>
+<script type="module">
+     import navbar from "./navbar.js"
+     console.log(navbar)
+     let nav=document.getElementById('nav')
+     nav.innerHTML=navbar()
+
+     import {getData,appendData} from "./main.js"
+
+     let receipeData=await getData(`https://www.themealdb.com/api/json/v1/1/random.php`)
+    let data=receipeData.meals
+    console.log(data)
+
+    let inputArr=[]
+    var func=document.querySelector("#submit").addEventListener("click",function(){
+
+        var inp=document.querySelector("#search").value
+        console.log(inp)
+        inputArr.push(inp)
+        localStorage.setItem("input",JSON.stringify(inputArr))
+        
+        
+         window.location.href="./receipe.html"
+    })
+    appendData(data,container)
+
+</script>
+<!-- <script>
+    
+
+    async function main() {
+        let name = document.getElementById("search").value;
+
+        if (name.length === 0) {
+            drop.style.display = "none";
+        }
+        if (name.length < 3) {
+            return false;
+        }
+
+        let res = await searchMovies(name);
+        let moviesdata = res.Search;
+        appendMovies(moviesdata)
+        console.log("res", moviesdata);
+
+    }
+
+    function debouncing(func,delay){
+        if(timerid){
+            clearTimeout(timerid)
+        }
+        timerid=setTimeout(function(){
+            func()
+        },delay)
+    }
+</script> -->

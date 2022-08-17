@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+   <div id="navbar"></div>
+</body>
+</html>
+<script type="module">
+    import {header} from "./components/header.js";
+    //console.log("header:",header);
+let navbar=document.getElementById("navbar");
+
+navbar.innerHTML=header();
+//https://api.github.com/users/swanandapps/repos
+
+ let input_box=document.getElementById("search-input")
+
+ input_box.addEventListener("keypress",()=>{
+
+     getData(event);
+
+});
+let img=document.getElementById("profile-img")
+
+ const getData=async (e)=>{
+    //console.log(e);
+    try{
+    if(e.code==="Enter"){
+        let input=input_box.value;
+
+        let res=await fetch(`https://api.github.com/users/${input}/repos`);
+         let data=await res.json();
+      console.log("data:",data);
+      img.src=data[0].owner.avatar_url;
+   }
+}
+catch(error){
+    console.log("error:",error);
+}
+   
+ };
+</script>

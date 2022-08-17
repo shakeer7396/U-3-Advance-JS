@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+   <style>
+     #nav{
+      display:flex;
+      justify-content: space-evenly;
+    }
+   </style>
+  <body>
+    <div id="nav">
+      <div><a href="index.html"><p>INDEX</p></a></div>
+      <div><a href="purchases.html"><p>PURCHASE</p></a></div>
+      <div><a href="addtowallet.html"><p>WALLET</p></a></div>
+    </div>
+    <div id="purchases">
+      <!--SHOW ALL YOUR PURCHASES HERE-->
+    </div>
+    
+  </body>
+</html>
+
+<script>
+  //WRITE YOUR LOGIC HERE
+
+  let purchaseArr=JSON.parse(localStorage.getItem("purchases"));
+  console.log(purchaseArr)
+  let purchases = document.getElementById("purchases");
+
+  function displayproducts(purchaseArr) {
+    purchases.innerHTML=null;
+    purchaseArr.map(function (elem) {
+
+      console.log(purchaseArr)
+      let div = document.createElement("div");
+
+      let name = document.createElement("p");
+      name.innerHTML = elem.name;
+
+      let img = document.createElement("img");
+      img.src = elem.image;
+
+      let price = document.createElement("p");
+      price.innerHTML = elem.price;
+
+      div.append(img, name, price);
+      purchases.append(div);
+    });
+  }
+
+  displayproducts(purchaseArr)
+</script>

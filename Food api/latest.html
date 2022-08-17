@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #nav{
+            width: 100%;
+            height: 80px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            display: flex;
+            align-items: center;
+        }
+        #left{
+            width: 70%;
+            margin-left: 30px;
+            font-weight: bold;
+        }
+        #right{
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        a{
+            color: black;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            text-align: center;
+            margin-top: 50px;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+            
+
+    </style>
+   
+</head>
+<body>
+    <div id="nav">
+    </div>
+    <div id="container"></div>
+</body>
+ </html>
+    <script type="module">
+    import navbar from "./navbar.js"
+    import {getData,appendData} from "./latest.js"
+    console.log(navbar)
+    let nav=document.getElementById('nav')
+    nav.innerHTML=navbar()      
+    
+    let comtainer=document.querySelector("#conatiner")
+    let receipeData=await getData(`https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood`)
+    let data=receipeData.meals
+    console.log(data)
+
+    appendData(data,container)
+    
+
+
+
+    </script>
+  

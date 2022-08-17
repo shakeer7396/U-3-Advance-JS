@@ -1,0 +1,22 @@
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  #options {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  #data{
+        display:grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:20px;
+        padding:50px;
+      }
+      img{
+        width:50%;
+      }

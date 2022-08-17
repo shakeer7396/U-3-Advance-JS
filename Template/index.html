@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+
+    #main{
+      display:grid;
+      grid-template-columns: repeat(4,1fr);
+      gap:20px;
+    }
+    #nav{
+      display:flex;
+      justify-content: space-evenly;
+    }
+  </style>
+
+  <body>
+    <div id="nav">
+      <div><a href="index.html"><p>INDEX</p></a></div>
+      <div><a href="purchases.html"><p>PURCHASE</p></a></div>
+      <div><a href="addtowallet.html"><p>WALLET</p></a></div>
+    </div>
+    <div>
+      <h3 id="wallet">0
+        <!--SHOW CURRENT WALLET VALUE HERE, ONLY THE NUMBER SHOULD BE VISIBLE-->
+        
+      </h3>
+    </div>
+
+    <div id="main">
+      <!--SHOW ALL THE VOUCEHRS DATA FROM API HERE( IMAGE, NAME AND PRICE)-->
+    </div>
+  </body>
+</html>
+
+<script type="module">
+  //WRITE YOUR LOGIC HERE
+  let url = "https://masai-vouchers-api.herokuapp.com/api/vouchers";
+
+  async function getData() {
+    try {
+      let res = await fetch(url);
+      //console.log('res:', res)
+
+      let data = await res.json();
+      let prods = data[0].vouchers;
+      displayproducts(prods);
+      console.log("prods:", prods);
+    } catch (error) {
+      console.log("error:", error);
+    }
+  }
+  getData();
+  function displayproducts(data) {
+    let main = document.getElementById("main");
+    data.map(function (elem) {
+      let div = document.createElement("div");
+
+      let name = document.createElement("p");
+      name.innerHTML = elem.name;
+
+      let img = document.createElement("img");
+      img.src = elem.image;
+
+      let price = document.createElement("p");
+      price.innerHTML = elem.price;
+
+      let btn=document.createElement("button");
+      btn.innerHTML="Buy";
+      btn.id="buy";
+      btn.addEventListener("click",function(){
+        purchase(elem)
+      })
+
+      div.append(img, name, price,btn);
+      main.append(div);
+    });
+  }
+   let purchaseArray=JSON.parse(localStorage.getItem("purchases"))|| [];
+    function purchase(elem){
+
+      if(elem.price>Number(walletAmount))
+      {
+         alert("Insufficient wallet balance")
+      }
+    else{
+      purchaseArray.push(elem);
+    localStorage.setItem("purchases",JSON.stringify(purchaseArray));
+    let total=Number(walletAmount)-Number(elem.price);
+    document.getElementById("wallet").innerHTML=total;
+    localStorage.setItem("wallet",total)
+
+    }
+  }
+
+  let walletAmount=localStorage.getItem("wallet") || 0;
+  let money=document.getElementById("wallet");
+  money.innerHTML=walletAmount;
+</script>

@@ -1,0 +1,58 @@
+#heading{
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(27, 207, 27);
+}
+#choose{
+    font-size: 20px;
+    font-weight: bold;
+    color: teal;
+}
+img{
+    width: 300px;
+    height: 250px;
+}
+#container{
+    width: 10%;
+    
+    
+    
+    padding-left:  25px;
+}
+#status{
+    margin-bottom: 20px;
+}
+#submit{
+    margin-left: 25px;
+    background-color: yellowgreen;
+    font-weight: bold;
+}
+#h{
+    margin-top: 5px;
+    color:yellowgreen;
+    font-weight: bold;
+}
+#display_order{
+   
+    margin-top: 20px;
+}
+h2{
+    color:rgb(236, 28, 184);
+}
+label{
+    color:rgb(236, 28, 184); 
+}
+p{
+    color: rgb(2, 183, 255);
+}
+#color{
+    color:rgb(2, 143, 89);
+    font-weight: bold;
+}
+#color1{
+    color:rgb(10, 231, 10);
+
+}
+body{
+background-color: yellow;
+}

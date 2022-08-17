@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css">
+      <body>
+        <!-- <div id="navbar">
+          <h3><a href="/">Home</a></h3>
+    
+          <div id="options">
+            <h3><a href="jewellery.html">Jewellery</a></h3>
+            <h3><a href="electronics.html">Electronics</a></h3>
+            <h3><a href="#">Register</a></h3>
+    
+            <h3><a href="#">Login</a></h3>
+          </div>
+        </div>
+       -->
+       <div id="header"></div>
+       <div id="data"></div>
+      </body>
+</html>
+<script type="module">
+  import navbar from "./components/navbar.js";
+  //console.log("navbar:",navbar);
+  import {getData,append} from"./scripts/fetchAppend.js";
+
+
+  let header =document.getElementById("header");
+
+ let parent=document.getElementById("data")
+
+  header.innerHTML=navbar();
+
+  let response=await getData(`https://fakestoreapi.com/products/category/electronics`);
+  console.log("response:",response);
+
+  append(response,parent)
+
+</script>
+<!-- https://fakestoreapi.com/products/category/jewelery -->
